@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Analysis Results</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f4f4f9;
+            padding: 50px;
+        }
+        .container {
+            text-align: center;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        img {
+            width: 80%;
+            margin-top: 20px;
+        }
+        .table-container {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Sentiment Analysis Results</h1>
+        <p><strong>Total Reviews:</strong> {{ total }}</p>
+        <p><strong>Positive Reviews:</strong> {{ positive }}</p>
+        <p><strong>Negative Reviews:</strong> {{ negative }}</p>
+        <p><strong>Neutral Reviews:</strong> {{ neutral }}</p>
+
+        <img src="{{ url_for('static', filename='wordcloud.png') }}" alt="WordCloud">
+
+        <div class="table-container">
+            <h3>Sample Data</h3>
+            {{ data|safe }}
+        </div>
+    </div>
+</body>
+</html>

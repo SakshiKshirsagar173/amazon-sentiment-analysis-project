@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Amazon Review Sentiment Analyzer</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-color: rgb(241, 239, 78);
+            padding: 50px;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            position: relative;
+        }
+        body.h1{
+            font-family: 'Roboto', sans-serif;
+            font-size: 2.5em;
+            color: rgb(0, 0, 0);            
+        }
+        .logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 120px;
+        }
+        textarea {
+            width: 50%;
+            height: 150px;
+            margin-top: 20px;
+            padding: 10px;
+            border: 2px solid black;
+            border-radius: 10px;
+        }
+        textarea:focus {
+    border-color: black; /* Keeps border black on focus */
+    outline: none;
+}
+
+        button {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: rgb(59, 68, 5);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: rgb(8, 8, 8);
+        }
+        .result {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Amazon logo -->
+    <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" alt="Amazon Logo" class="logo">
+
+    <h1><b>amazon</b></h1>
+    <h3><b>REVIEW SENTIMENT ANALYZER</b></h3>
+
+    <form method="POST" action="/predict">
+        <textarea name="review" placeholder="Write your Amazon review here...">{{ review if review }}</textarea><br>
+        <button type="submit">Analyze Sentiment</button>
+    </form>
+
+    {% if sentiment %}
+    <div class="result">
+        <p><strong>Sentiment:</strong> {{ sentiment }}</p>
+        <p><strong>Polarity:</strong> {{ polarity }}</p>
+        <p><strong>Subjectivity:</strong> {{ subjectivity }}</p>
+    </div>
+    {% endif %}
+
+</body>
+</html>
